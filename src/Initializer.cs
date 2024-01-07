@@ -18,7 +18,7 @@ internal sealed unsafe class Initializer
 {
     private static NativeHook? _formatMessageHook;
     private static readonly FormatMessageHookedCallback FormatMessageDelegate = FormatMessageHooked;
-    private const string CultureName = "en-US";
+    private const string CultureName = "de-AT";
     private static Lazy<CultureInfo> EnglishUsCulture => new(() => CultureInfo.GetCultureInfo(CultureName));
 
     [SuppressMessage("ReSharper", "IdentifierTypo")]
@@ -49,7 +49,7 @@ internal sealed unsafe class Initializer
     ///     This libraries "Main" method, so the caller has to do nothing but reference our library.
     /// </summary>
     [ModuleInitializer]
-    public static void Initialize()
+    internal static void Initialize()
     {
         IntPtr kernel32 = DynDll.OpenLibrary("Kernel32.dll");
         IntPtr formatMessageW = kernel32.GetExport("FormatMessageW");
