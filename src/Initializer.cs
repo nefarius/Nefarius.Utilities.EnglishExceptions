@@ -18,7 +18,8 @@ internal sealed unsafe class Initializer
 {
     private static NativeHook? _formatMessageHook;
     private static readonly FormatMessageHookedCallback FormatMessageDelegate = FormatMessageHooked;
-    private static readonly CultureInfo EnglishUsCulture = CultureInfo.GetCultureInfo("en-US");
+    private const string CultureName = "en-US";
+    private static Lazy<CultureInfo> EnglishUsCulture => new(() => CultureInfo.GetCultureInfo(CultureName));
 
     [SuppressMessage("ReSharper", "IdentifierTypo")]
     private static int FormatMessageHooked(
@@ -35,10 +36,10 @@ internal sealed unsafe class Initializer
         IEnumerable<CultureInfo> installedLanguages = LangUtils.InstalledInputLanguages;
 
         // English language pack is available
-        if (installedLanguages.Any(c => c.Equals(EnglishUsCulture)))
+        if (installedLanguages.Any(c => c.Equals(EnglishUsCulture.Value)))
         {
             // override whatever caller requested
-            dwlanguageid = EnglishUsCulture.KeyboardLayoutId;
+            dwlanguageid = EnglishUsCulture.Value.KeyboardLayoutId;
         }
 
         return orig(dwflags, lpsource, dwmessageid, dwlanguageid, lpbuffer, nsize, arguments);
