@@ -14,11 +14,11 @@ namespace Nefarius.Utilities.EnglishExceptions;
 /// <summary>
 ///     Main logic (establishing hooks etc.) goes here.
 /// </summary>
-internal sealed unsafe class Initializer
+public sealed unsafe class Patcher : IDisposable
 {
     private static NativeHook? _formatMessageHook;
     private static readonly FormatMessageHookedCallback FormatMessageDelegate = FormatMessageHooked;
-    private const string CultureName = "de-AT";
+    private const string CultureName = "en-US";
     private static Lazy<CultureInfo> EnglishUsCulture => new(() => CultureInfo.GetCultureInfo(CultureName));
 
     [SuppressMessage("ReSharper", "IdentifierTypo")]
@@ -48,8 +48,16 @@ internal sealed unsafe class Initializer
     /// <summary>
     ///     This libraries "Main" method, so the caller has to do nothing but reference our library.
     /// </summary>
-    [ModuleInitializer]
-    internal static void Initialize()
+    //[ModuleInitializer]
+    //public static void Initialize()
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+    /// <summary>
+    ///     TODO: finish me!
+    /// </summary>
+    public Patcher()
     {
         IntPtr kernel32 = DynDll.OpenLibrary("Kernel32.dll");
         IntPtr formatMessageW = kernel32.GetExport("FormatMessageW");
@@ -57,9 +65,9 @@ internal sealed unsafe class Initializer
         _formatMessageHook = new NativeHook(formatMessageW, FormatMessageDelegate);
     }
 
-    ~Initializer()
+    ~Patcher()
     {
-        _formatMessageHook?.Undo();
+        ReleaseUnmanagedResources();
     }
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
@@ -84,4 +92,16 @@ internal sealed unsafe class Initializer
         int nSize,
         IntPtr* arguments
     );
+
+    private void ReleaseUnmanagedResources()
+    {
+        _formatMessageHook?.Undo();
+    }
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        ReleaseUnmanagedResources();
+        GC.SuppressFinalize(this);
+    }
 }
