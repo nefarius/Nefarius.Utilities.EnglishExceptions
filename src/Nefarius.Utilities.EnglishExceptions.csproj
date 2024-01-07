@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- <TargetFramework>net7.0</TargetFramework> -->
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -11,6 +10,7 @@
     <RepositoryUrl>https://github.com/nefarius/Nefarius.Utilities.EnglishExceptions</RepositoryUrl>
     <PackageProjectUrl>https://github.com/nefarius/Nefarius.Utilities.EnglishExceptions</PackageProjectUrl>
     <Description>Summary. README takes priority over this but nice to have.</Description>
+    <NoWarn>CA2255</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MonoMod.RuntimeDetour" Version="25.1.0-prerelease.1" />
   </ItemGroup>
 
 </Project>
