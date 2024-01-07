@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nefarius.Utilities.EnglishExceptions", "src\Nefarius.Utilities.EnglishExceptions.csproj", "{3FA0A520-9530-46BB-8C30-974D491EA4FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.Utilities.EnglishExceptions", "src\Nefarius.Utilities.EnglishExceptions.csproj", "{3FA0A520-9530-46BB-8C30-974D491EA4FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{00DAF546-B738-4C10-BC0B-E272668CC62F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{5ACEE4A1-D774-463F-BE6B-8C90AEDEEEA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "app\app.csproj", "{E6CB5464-B457-4607-BE12-B08A92F6E693}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,17 @@ Global
 		{3FA0A520-9530-46BB-8C30-974D491EA4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FA0A520-9530-46BB-8C30-974D491EA4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FA0A520-9530-46BB-8C30-974D491EA4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5464-B457-4607-BE12-B08A92F6E693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CB5464-B457-4607-BE12-B08A92F6E693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CB5464-B457-4607-BE12-B08A92F6E693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5464-B457-4607-BE12-B08A92F6E693}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FA0A520-9530-46BB-8C30-974D491EA4FE} = {00DAF546-B738-4C10-BC0B-E272668CC62F}
+		{E6CB5464-B457-4607-BE12-B08A92F6E693} = {5ACEE4A1-D774-463F-BE6B-8C90AEDEEEA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A647B04-BF1E-46DA-B441-5EF420F9B557}
