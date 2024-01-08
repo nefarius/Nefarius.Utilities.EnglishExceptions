@@ -7,3 +7,7 @@ Unlocalizes non-English exception messages in any .NET application.
 ## About
 
 *Very* work in progress, use with care 🔥
+
+## Sources
+
+- [Exception Handling / Error Logging in English](https://github.com/dotnet/runtime/issues/40427)
